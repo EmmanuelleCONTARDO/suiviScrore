@@ -33,7 +33,7 @@ public class Team {
 	private String townName;
 
 	// Relation with Players
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(mappedBy = "team", fetch = FetchType.LAZY) // team correspond au team de player
 	private List<Player> players;
 

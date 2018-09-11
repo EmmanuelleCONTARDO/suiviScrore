@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,37 +15,34 @@ public class PlayerService implements IPlayerService {
 	@Inject
 	PlayerRepository playerRepository;
 
-	public Player savePlayer(Player player) {
-		playerRepository.save(player);
-		return player;
-	}
+	public Player save(Player p) {
+		return playerRepository.save(p);
 
-	public List<Player> getAll() {
-		return playerRepository.findAll();
-	}
-
-	public List<Player> findAll() {
-		return playerRepository.findAll();
 	}
 
 	public Player getById(int id) {
 		return playerRepository.getById(id);
 	}
 
+	public List<Player> findAll() {
+		return playerRepository.findAll();
+	}
+
+	public List<Player> getAll() {
+		return playerRepository.findAll();
+	}
+
+	public Optional<Player> findbyId(int id) {
+		return playerRepository.findById(id);
+	}
+
 	public void deleteById(int id) {
 		playerRepository.deleteById(id);
 	}
 
-	@Override
-	public Player save(Player player) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<Player> findByFirstName(String firstName) {
 
-	@Override
-	public List<Player> findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return playerRepository.findByFirstName(firstName);
 	}
 
 }

@@ -8,6 +8,8 @@ import javax.inject.Named;
 import com.example.demo.model.Player;
 
 
+
+
 @Named
 public interface IPlayerService {
 	
@@ -15,9 +17,14 @@ public interface IPlayerService {
 	 Player getById(int id);
 	 List<Player> findAll();
 	 List<Player> getAll();
-	
-	 List<Player> findByName(String name);
+	Optional<Player> findbyId(int id);
+	 List<Player> findByFirstName(String firstName);
  	
 	public void deleteById(int id);
 }
+
+
+	
+
+
 

@@ -14,60 +14,58 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.example.demo.model.Player;
-import com.example.demo.service.IPlayerService;
+import com.example.demo.model.SportingEvent;
+import com.example.demo.service.ISportingEventService;
 
 @Controller
-@RequestMapping("/player")
+@RequestMapping("/sportingevent")
 @CrossOrigin(origins = { "http://localhost:4201" })
-public class PlayerController {
+public class SportingEventController {
 
 	@Inject
-	IPlayerService playerService;
-
-	// public PlayerController() {
-	// }
+	ISportingEventService sportingEventService;
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
-	public Player createPlayer(@RequestBody Player player) {
-		return playerService.save(player);
+	public SportingEvent createsportingEvent(@RequestBody SportingEvent sportingEvent) {
+		return sportingEventService.save(sportingEvent);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public void delete(@PathVariable(value = "id") int id) {
-		playerService.deleteById(id);
+		sportingEventService.deleteById(id);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
-	public List<Player> getAll() {
-		return playerService.getAll();
+	public List<SportingEvent> getAll() {
+		return sportingEventService.getAll();
 	}
 
-	// Recherche par nom du joueur
-	@RequestMapping(value = "/firstname/{firstName}", method = RequestMethod.GET)
+	// Search day of match
+	@RequestMapping(value = "/sportingevent/{leaguedDay}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Player> getByFirstName(@PathVariable(value = "firstName") String firstName) {
-		System.out.println("name = " + firstName);
-		return playerService.findByFirstName(firstName);
+	public List<SportingEvent> findByLeagueDay(@PathVariable(value = "leaguedDay") String leaguedDay) {
+		System.out.println("Day of match = " + leaguedDay);
+		return sportingEventService.findByLeagueDay(leaguedDay);
 	}
 
 	// Recherche par ID
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Player getById(@PathVariable(value = "id") int id) {
-		return playerService.getById(id);
+	public SportingEvent getById(@PathVariable(value = "id") int id) {
+		return sportingEventService.getById(id);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseBody
-	public Player update(@RequestBody Player player) {
+	public SportingEvent update(@RequestBody SportingEvent sportingEvent) {
 
-		Player update = playerService.save(player);
+		SportingEvent update = sportingEventService.save(sportingEvent);
 		return update;
 
 	}
+
 }

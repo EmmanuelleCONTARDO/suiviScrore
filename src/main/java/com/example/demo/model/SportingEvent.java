@@ -19,6 +19,11 @@ public class SportingEvent {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
+	// Day of msporting Event
+	@Column (name = "LeagueDay")
+	private String leagueDay;
+	
+
 	// Name of hometeam
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "teamHome_fk")
@@ -53,6 +58,13 @@ public class SportingEvent {
 		this.id = id;
 	}
 
+	public String getLeagueDay() {
+		return leagueDay;
+	}
+
+	public void setLeagueDay(String leagueDay) {
+		this.leagueDay = leagueDay;
+	}
 
 	public Team getHomeTeam() {
 		return homeTeam;
@@ -96,9 +108,11 @@ public class SportingEvent {
 
 	@Override
 	public String toString() {
-		return "SportingEvent [id=" + id + ", homeTeam=" + homeTeam + ", visitorTeam=" + visitorTeam + ", score="
-				+ score + ", date=" + date + "]";
+		return "SportingEvent [id=" + id + ", leagueDay=" + leagueDay + ", homeTeam=" + homeTeam + ", visitorTeam="
+				+ visitorTeam + ", score=" + score + ", date=" + date + "]";
 	}
+
+
 	
 	
 	

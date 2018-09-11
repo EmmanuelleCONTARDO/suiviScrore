@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "player")
 public class Player {
@@ -37,8 +39,9 @@ public class Player {
 	
 	
 	//Name of player team & relation with Team
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "team_fk") 
+	@JsonIgnore
 	private Team team;
 
 	
