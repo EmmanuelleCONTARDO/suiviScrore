@@ -19,35 +19,35 @@ public class SportingEvent {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	// Day of msporting Event
+	// Day of sporting Event
 	@Column (name = "LeagueDay")
 	private String leagueDay;
 	
 
 	// Name of hometeam
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "teamHome_fk")
 	private Team homeTeam;
 
 	// Name of visitorteam
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "teamVisit_fk")
 	private Team visitorTeam;
 
-	// score of match
-	@Column(name = "score", nullable = false)
-	private int score;
+	// score of match  home team
+	@Column(name = "scoreHome")
+	private int scoreH;
 
-	// date of match
-	@Column(name = "date", nullable = false)
-	private String date;
+	// score of match visitor team
+	@Column(name = "scoreVisitor")
+	private int scoreV;
 	
-
+	//
 	// constructor
 	public SportingEvent() {
 		}
 
-
+	//
 	// Getters & Setter
 	public int getId() {
 		return id;
@@ -85,32 +85,31 @@ public class SportingEvent {
 		this.visitorTeam = visitorTeam;
 	}
 
-
-	public int getScore() {
-		return score;
+	public int getScoreH() {
+		return scoreH;
 	}
 
-
-	public void setScore(int score) {
-		this.score = score;
+	public void setScoreH(int scoreH) {
+		this.scoreH = scoreH;
 	}
 
-
-	public String getDate() {
-		return date;
+	public int getScoreV() {
+		return scoreV;
 	}
 
-
-	public void setDate(String date) {
-		this.date = date;
+	public void setScoreV(int scoreV) {
+		this.scoreV = scoreV;
 	}
-
 
 	@Override
 	public String toString() {
 		return "SportingEvent [id=" + id + ", leagueDay=" + leagueDay + ", homeTeam=" + homeTeam + ", visitorTeam="
-				+ visitorTeam + ", score=" + score + ", date=" + date + "]";
+				+ visitorTeam + ", scoreH=" + scoreH + ", scoreV=" + scoreV + "]";
 	}
+
+
+
+
 
 
 	
